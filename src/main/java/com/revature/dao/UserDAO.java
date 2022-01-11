@@ -1,5 +1,7 @@
 package com.revature.dao;
 
+import com.revature.models.Admin;
+import com.revature.models.Customer;
 import com.revature.models.User;
 
 import java.util.ArrayList;
@@ -12,9 +14,14 @@ public class UserDAO {
     public UserDAO(){
         users = new ArrayList<User>();
 
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
+        users.add(new Customer());
+        users.add(new Customer(
+                "Adam",
+                "ADAWG",
+                "adam@host.com",
+                2
+        ));
+        users.add(new Admin());
     }
 
     public List<User> getAllUsers() {
