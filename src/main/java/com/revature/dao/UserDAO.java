@@ -24,7 +24,7 @@ public class UserDAO {
         users.add(new Admin());
     }
 
-    public List<User> getAllUsers() {
+    public ArrayList<User> getAllUsers() {
         return users;
     }
 }

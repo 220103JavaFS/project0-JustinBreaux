@@ -9,6 +9,7 @@ public final class Game {
     public final int pointMax;
     public double ticketMultiplier;
     public ArrayList highScores;
+    private Customer player;
 
     public Game(int pointMin, int pointMax) {
         this.pointMin = pointMin;

@@ -5,8 +5,6 @@ import java.util.Objects;
 public abstract class User {
 
     public static int totalAccounts;
-    private int id;
-    private String name;
 
     public User() {
     }
