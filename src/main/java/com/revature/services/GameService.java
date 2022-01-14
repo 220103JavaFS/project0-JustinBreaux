@@ -1,6 +1,6 @@
 package com.revature.services;
 
-import com.revature.dao.GameDAO;
+import com.revature.repos.GameDAO;
 import com.revature.models.Game;
 
 import java.util.List;

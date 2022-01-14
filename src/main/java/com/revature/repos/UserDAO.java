@@ -1,11 +1,10 @@
-package com.revature.dao;
+package com.revature.repos;
 
 import com.revature.models.Admin;
 import com.revature.models.Customer;
 import com.revature.models.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class UserDAO {
 
