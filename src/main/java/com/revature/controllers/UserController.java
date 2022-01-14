@@ -12,8 +12,8 @@ public class UserController {
     private UserService userService = new UserService();
 
     private Handler getAllUsers = (ctx)->{
-       List<User> list = userService.getAllUsers();
-       ctx.json(list);
+       //List<User> list = userService.getAllUsers();
+       ctx.json(userService.getAllUsers());
        ctx.status(200);
     };
 

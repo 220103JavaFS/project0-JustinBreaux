@@ -1,29 +1,42 @@
 package com.revature.repos;
 
-import com.revature.models.Admin;
-import com.revature.models.Customer;
 import com.revature.models.User;
+import com.revature.utils.ConnectionUtil;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
+    public List<User> getAllUsers() {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "SELECT * FROM users;";
 
-    private static ArrayList<User> users;
+            Statement statement = conn.createStatement();
 
-    public UserDAO(){
-        users = new ArrayList<User>();
+            ResultSet result = statement.executeQuery(sql);
 
-        users.add(new Customer());
-        users.add(new Customer(
-                "Adam",
-                "ADAWG",
-                "adam@host.com",
-                2
-        ));
-        users.add(new Admin());
-    }
+            List<User> list = new ArrayList<>();
 
-    public ArrayList<User> getAllUsers() {
-        return users;
+            while(result.next()){
+                User user = new User();
+                user.setUserId(result.getInt("user_id"));
+                user.setFirstName(result.getString("first_name"));
+                user.setLastName(result.getString("last_name"));
+                user.setAdminStatus(result.getBoolean("admin_status"));
+
+                list.add(user);
+            }
+
+            return list;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return new ArrayList<User>();
     }
 }
