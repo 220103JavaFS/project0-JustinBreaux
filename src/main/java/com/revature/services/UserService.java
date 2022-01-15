@@ -15,7 +15,12 @@ public class UserService {
         return userDAO.getAllUsers();
     }
 
-    String pw = BCrypt.hashpw("PaSSworrd", BCrypt.gensalt());
+    public boolean setPassword(String userEmail, String userPassword){
+        String hashedPW = BCrypt.hashpw(userPassword, BCrypt.gensalt());
+        return userDAO.setPassword(userEmail, hashedPW);
+    }
+
+
 
 
 }

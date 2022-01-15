@@ -1892,3 +1892,73 @@ java.util.concurrent.TimeoutException: Idle timeout expired: 30017/30000 ms
 17:57:09.107 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
 17:57:09.339 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
 17:57:09.339 [] [main] INFO  io.javalin.Javalin - Javalin started in 247ms \o/
+21:53:47.167 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+21:53:47.170 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @422ms to org.eclipse.jetty.util.log.Slf4jLog
+21:53:47.170 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+21:53:47.185 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 96 days old. Consider upgrading!).
+21:53:47.185 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+21:53:47.429 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+21:53:47.429 [] [main] INFO  io.javalin.Javalin - Javalin started in 259ms \o/
+21:56:23.222 [] [qtp345281752-24] WARN  io.javalin.Javalin - Uncaught exception
+java.lang.NullPointerException: null
+	at org.springframework.security.crypto.bcrypt.BCrypt.hashpw(BCrypt.java:575)
+	at com.revature.services.UserService.setPassword(UserService.java:19)
+	at com.revature.controllers.UserController.lambda$new$1(UserController.java:21)
+	at io.javalin.core.security.SecurityUtil.noopAccessManager(SecurityUtil.kt:20)
+	at io.javalin.http.JavalinServlet.addHandler$lambda-5(JavalinServlet.kt:113)
+	at io.javalin.http.JavalinServlet$service$tryBeforeAndEndpointHandlers$1.invoke(JavalinServlet.kt:44)
+	at io.javalin.http.JavalinServlet$service$tryBeforeAndEndpointHandlers$1.invoke(JavalinServlet.kt:39)
+	at io.javalin.http.JavalinServlet.service$tryWithExceptionMapper(JavalinServlet.kt:129)
+	at io.javalin.http.JavalinServlet.service$tryBeforeAndEndpointHandlers(JavalinServlet.kt:39)
+	at io.javalin.http.JavalinServlet.service(JavalinServlet.kt:87)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at io.javalin.jetty.JavalinJettyServlet.service(JavalinJettyServlet.kt:58)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:799)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:550)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1624)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+	at io.javalin.jetty.JettyServer$start$wsAndHttpHandler$1.doHandle(JettyServer.kt:52)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:501)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1594)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1349)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:179)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.Server.handle(Server.java:516)
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:400)
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:645)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:392)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105)
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034)
+	at java.lang.Thread.run(Thread.java:748)
+21:59:56.361 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+21:59:56.376 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @455ms to org.eclipse.jetty.util.log.Slf4jLog
+21:59:56.376 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+21:59:56.392 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 96 days old. Consider upgrading!).
+21:59:56.392 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+21:59:56.639 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+21:59:56.639 [] [main] INFO  io.javalin.Javalin - Javalin started in 263ms \o/

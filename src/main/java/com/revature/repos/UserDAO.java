@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface UserDAO {
     public List<User> getAllUsers();
+    public boolean setPassword(String userEmail, String userPassword);
 }

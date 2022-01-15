@@ -3,10 +3,7 @@ package com.revature.repos;
 import com.revature.models.User;
 import com.revature.utils.ConnectionUtil;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,5 +36,25 @@ public class UserDAOImpl implements UserDAO{
         }
 
         return new ArrayList<User>();
+    }
+
+    @Override
+    public boolean setPassword(String userEmail, String userPassword) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "INSERT INTO logins(email, user_password) VALUES (?, ?);";
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, userEmail);
+            statement.setString(2, userPassword);
+
+            statement.execute();
+
+            return true;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.models.LoginDTO;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
@@ -14,11 +15,23 @@ public class UserController implements Controller{
        ctx.status(200);
     };
 
+    private Handler setPassword = (ctx)->{
+        LoginDTO login = ctx.bodyAsClass(LoginDTO.class);
+
+        if(userService.setPassword(login.username, login.password)){
+            ctx.status(202);
+        }else{
+            ctx.status(401);
+        }
+
+    };
+
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/User", getAllUsers);
-        //app.get("/User/{id}", getOneUser);
-        //app.post("/User", addUser);
+        app.get("/user", getAllUsers);
+        //app.get("/user/{id}", getOneUser);
+        //app.post("/user", addUser);
+        app.post("/user/changepw", setPassword);
 
     }
 }
