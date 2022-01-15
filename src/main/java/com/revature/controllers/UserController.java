@@ -1,13 +1,10 @@
 package com.revature.controllers;
 
-import com.revature.models.User;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
 
-import java.util.List;
-
-public class UserController {
+public class UserController implements Controller{
 
     private UserService userService = new UserService();
 
@@ -17,6 +14,7 @@ public class UserController {
        ctx.status(200);
     };
 
+    @Override
     public void addRoutes(Javalin app) {
         app.get("/User", getAllUsers);
         //app.get("/User/{id}", getOneUser);

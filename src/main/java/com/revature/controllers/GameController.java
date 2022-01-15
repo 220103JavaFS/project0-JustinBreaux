@@ -7,7 +7,7 @@ import io.javalin.http.Handler;
 
 import java.util.List;
 
-public class GameController {
+public class GameController implements Controller{
 
     private GameService gameService = new GameService();
 
@@ -30,6 +30,7 @@ public class GameController {
 
     };
 
+    @Override
     public void addRoutes(Javalin app) {
         app.get("/Game", getAllGames);
         app.get("/Game/{name}", getGameByName);

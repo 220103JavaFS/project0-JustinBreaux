@@ -5,10 +5,10 @@ import com.revature.models.Game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameDAO {
+public class GameDAOImpl {
     private static ArrayList<Game> games;
 
-    public GameDAO(){
+    public GameDAOImpl(){
         games = new ArrayList<Game>();
 
         games.add(new Game(0, 100));

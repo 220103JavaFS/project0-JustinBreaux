@@ -1877,3 +1877,18 @@ java.util.concurrent.TimeoutException: Idle timeout expired: 30017/30000 ms
 17:55:53.471 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
 17:55:53.703 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
 17:55:53.703 [] [main] INFO  io.javalin.Javalin - Javalin started in 248ms \o/
+17:57:09.076 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+17:57:09.092 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @424ms to org.eclipse.jetty.util.log.Slf4jLog
+17:57:09.092 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+17:57:09.107 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 96 days old. Consider upgrading!).
+17:57:09.107 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+17:57:09.339 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+17:57:09.339 [] [main] INFO  io.javalin.Javalin - Javalin started in 247ms \o/
