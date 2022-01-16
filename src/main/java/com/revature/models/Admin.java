@@ -2,19 +2,26 @@ package com.revature.models;
 
 import java.util.Objects;
 
-public class User {
-
-    private String userEmail; //unique email address for each user
+public class Admin {
+    private String email;
     private String firstName;
     private String lastName;
 
-    public User() {
+    public Admin() {
     }
 
-    public User(String userEmail, String firstName, String lastName) {
-        this.userEmail = userEmail;
+    public Admin(String email, String firstName, String lastName) {
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -33,31 +40,23 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return Objects.equals(getUserEmail(), user.getUserEmail()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName());
+        if (!(o instanceof Admin)) return false;
+        Admin admin = (Admin) o;
+        return Objects.equals(getEmail(), admin.getEmail()) && Objects.equals(getFirstName(), admin.getFirstName()) && Objects.equals(getLastName(), admin.getLastName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUserEmail(), getFirstName(), getLastName());
+        return Objects.hash(getEmail(), getFirstName(), getLastName());
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "userEmail='" + userEmail + '\'' +
+        return "Admin{" +
+                "email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';

@@ -11,7 +11,7 @@ public class UserDAOImpl implements UserDAO{
 
     public List<User> getAllUsers() {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM users;";
+            String sql = "SELECT * FROM players UNION SELECT * FROM admins;";
 
             Statement statement = conn.createStatement();
 
@@ -21,10 +21,8 @@ public class UserDAOImpl implements UserDAO{
 
             while(result.next()){
                 User user = new User();
-                user.setUserId(result.getInt("user_id"));
                 user.setFirstName(result.getString("first_name"));
                 user.setLastName(result.getString("last_name"));
-                user.setAdminStatus(result.getBoolean("admin_status"));
 
                 list.add(user);
             }
@@ -41,7 +39,7 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public boolean setPassword(String userEmail, String userPassword) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "INSERT INTO logins(email, user_password) VALUES (?, ?);";
+            String sql = "INSERT INTO logins(user_email, user_password) VALUES (?, ?);";
 
             PreparedStatement statement = conn.prepareStatement(sql);
 
@@ -51,6 +49,29 @@ public class UserDAOImpl implements UserDAO{
             statement.execute();
 
             return true;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean checkAdminStatus(String userEmail) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "SELECT admin_email FROM admins WHERE admin_email = ?;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, userEmail);
+            ResultSet result = statement.executeQuery();
+            if(result.next()){
+                if(result.wasNull()){
+                    return false;
+                }else{
+                    return true;
+                }
+            }else{
+                return false;
+            }
 
         }catch (SQLException e){
             e.printStackTrace();

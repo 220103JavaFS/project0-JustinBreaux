@@ -11,7 +11,7 @@ public class LoginDAOImpl implements LoginDAO{
     @Override
     public String getPassword(String userEmail) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT user_password FROM logins WHERE email = ?;";
+            String sql = "SELECT user_password FROM logins WHERE user_email = ?;";
 
             PreparedStatement statement = conn.prepareStatement(sql);
 
