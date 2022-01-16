@@ -19,6 +19,16 @@ public class UserController implements Controller{
 
     };
 
+    private Handler getPlayer = (ctx)->{
+        if(ctx.req.getSession(false)!=null){
+            String username = ctx.pathParam("username");
+            ctx.json(userService.getPlayer(username));
+            ctx.status(200);
+        }else {
+            ctx.status(401);
+        }
+    };
+
     private Handler setPassword = (ctx)->{
         if(ctx.req.getSession(false)!=null) {
             LoginDTO login = ctx.bodyAsClass(LoginDTO.class);
@@ -57,8 +67,8 @@ public class UserController implements Controller{
 
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/users", getAllPlayers);
-        //app.get("/user/{id}", getOneUser);
+        app.get("/players", getAllPlayers);
+        app.get("/players/{username}", getPlayer);
         //app.post("/user", addUser);
         app.post("/users/changepw", setPassword);
         app.post("/login", login);

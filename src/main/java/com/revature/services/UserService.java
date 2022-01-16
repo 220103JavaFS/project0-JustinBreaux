@@ -20,6 +20,10 @@ public class UserService {
         return userDAO.getAllPlayers();
     }
 
+    public Player getPlayer(String username){
+        return userDAO.getPlayer(username);
+    }
+
     public boolean setPassword(String userEmail, String userPassword){
         String hashedPW = BCrypt.hashpw(userPassword, BCrypt.gensalt());
         return userDAO.setPassword(userEmail, hashedPW);

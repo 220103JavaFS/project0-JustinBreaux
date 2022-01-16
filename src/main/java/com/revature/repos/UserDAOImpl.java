@@ -42,6 +42,31 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
+    public Player getPlayer(String username) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "SELECT * FROM players WHERE player_name = ?;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, username);
+            ResultSet result = statement.executeQuery();
+            Player player = new Player();
+            if(result.next()){
+                player.setEmail(result.getString("player_email"));
+                player.setFirstName(result.getString("player_first_name"));
+                player.setLastName(result.getString("player_last_name"));
+                player.setUsername(result.getString("player_name"));
+                player.setTokenBalance(result.getInt("token_balance"));
+                player.setTicketBalance(result.getInt("ticket_balance"));
+                player.setTier(result.getInt("tier"));
+            }
+            return player;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return new Player();
+    }
+
+    @Override
     public boolean setPassword(String userEmail, String userPassword) {
         try(Connection conn = ConnectionUtil.getConnection()){
             String sql = "INSERT INTO logins(user_email, user_password) VALUES (?, ?);";
