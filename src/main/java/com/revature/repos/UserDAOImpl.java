@@ -1,6 +1,6 @@
 package com.revature.repos;
 
-import com.revature.models.User;
+import com.revature.models.Player;
 import com.revature.utils.ConnectionUtil;
 
 import java.sql.*;
@@ -9,22 +9,27 @@ import java.util.List;
 
 public class UserDAOImpl implements UserDAO{
 
-    public List<User> getAllUsers() {
+    public List<Player> getAllPlayers() {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM players UNION SELECT * FROM admins;";
+            String sql = "SELECT * FROM players;";
 
             Statement statement = conn.createStatement();
 
             ResultSet result = statement.executeQuery(sql);
 
-            List<User> list = new ArrayList<>();
+            List<Player> list = new ArrayList<>();
 
             while(result.next()){
-                User user = new User();
-                user.setFirstName(result.getString("first_name"));
-                user.setLastName(result.getString("last_name"));
+                Player player = new Player();
+                player.setEmail(result.getString("player_email"));
+                player.setFirstName(result.getString("player_first_name"));
+                player.setLastName(result.getString("player_last_name"));
+                player.setUsername(result.getString("player_name"));
+                player.setTokenBalance(result.getInt("token_balance"));
+                player.setTicketBalance(result.getInt("ticket_balance"));
+                player.setTier(result.getInt("tier"));
 
-                list.add(user);
+                list.add(player);
             }
 
             return list;
@@ -33,7 +38,7 @@ public class UserDAOImpl implements UserDAO{
             e.printStackTrace();
         }
 
-        return new ArrayList<User>();
+        return new ArrayList<Player>();
     }
 
     @Override

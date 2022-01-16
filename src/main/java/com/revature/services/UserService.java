@@ -16,8 +16,8 @@ public class UserService {
     private UserDAO userDAO = new UserDAOImpl();
     private LoginDAO loginDAO = new LoginDAOImpl();
 
-    public List<User> getAllUsers() {
-        return userDAO.getAllUsers();
+    public List<Player> getAllPlayers() {
+        return userDAO.getAllPlayers();
     }
 
     public boolean setPassword(String userEmail, String userPassword){

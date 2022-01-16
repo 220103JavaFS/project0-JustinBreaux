@@ -9,9 +9,14 @@ public class UserController implements Controller{
 
     private UserService userService = new UserService();
 
-    private Handler getAllUsers = (ctx)->{
-       ctx.json(userService.getAllUsers());
-       ctx.status(200);
+    private Handler getAllPlayers = (ctx)->{
+        if(ctx.req.getSession(false)!=null){
+            ctx.json(userService.getAllPlayers());
+            ctx.status(200);
+        }else {
+            ctx.status(401);
+        }
+
     };
 
     private Handler setPassword = (ctx)->{
@@ -52,7 +57,7 @@ public class UserController implements Controller{
 
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/users", getAllUsers);
+        app.get("/users", getAllPlayers);
         //app.get("/user/{id}", getOneUser);
         //app.post("/user", addUser);
         app.post("/users/changepw", setPassword);
