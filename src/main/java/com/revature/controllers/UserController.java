@@ -43,15 +43,11 @@ public class UserController implements Controller{
             case "failed": ctx.req.getSession().invalidate();
                 ctx.status(401);
         }
+    };
 
-//        if(userService.login(login.userEmail, login.password).isEmpty()){
-//            ctx.req.getSession();
-//            ctx.sessionAttribute("userType", "player");
-//            ctx.status(200);
-//        }else{
-//            ctx.req.getSession().invalidate();
-//            ctx.status(401);
-//        }
+    private Handler logout = (ctx)->{
+        ctx.req.getSession().invalidate();
+        ctx.status(200);
     };
 
     @Override
@@ -61,6 +57,7 @@ public class UserController implements Controller{
         //app.post("/user", addUser);
         app.post("/users/changepw", setPassword);
         app.post("/login", login);
+        app.post("/logout", logout);
 
     }
 }
