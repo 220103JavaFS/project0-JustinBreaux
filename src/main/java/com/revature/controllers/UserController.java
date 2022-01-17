@@ -40,9 +40,13 @@ public class UserController implements Controller{
         if(ctx.req.getSession(false)!=null) {
             LoginDTO login = ctx.bodyAsClass(LoginDTO.class);
 
-            if (userService.setPassword(login.userEmail, login.password)) {
-                ctx.status(202);
-            } else {
+            if(ctx.sessionAttribute("email").equals(login.userEmail)){
+                if (userService.setPassword(login.userEmail, login.password)) {
+                    ctx.status(202);
+                } else {
+                    ctx.status(401);
+                }
+            }else{
                 ctx.status(401);
             }
         }else {
@@ -60,6 +64,7 @@ public class UserController implements Controller{
                 break;
             case "player": ctx.req.getSession();
                 ctx.sessionAttribute("userType", "player");
+                ctx.sessionAttribute("email", login.userEmail.toString());
                 ctx.status(200);
                 break;
             case "failed": ctx.req.getSession().invalidate();
@@ -76,9 +81,8 @@ public class UserController implements Controller{
     public void addRoutes(Javalin app) {
         app.get("/players", getAllPlayers);
         app.get("/players/{username}", getPlayer);
-        //app.get("")
         //app.post("/user", addUser);
-        //app.post("/players/{username}/changepw", setPassword);
+        app.put("/players/{username}/changepw", setPassword);
         app.post("/login", login);
         app.post("/logout", logout);
 

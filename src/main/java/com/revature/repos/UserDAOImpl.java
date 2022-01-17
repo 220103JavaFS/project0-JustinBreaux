@@ -71,12 +71,13 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public boolean setPassword(String userEmail, String userPassword) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "INSERT INTO logins(user_email, user_password) VALUES (?, ?);";
+            String sql = "UPDATE logins SET user_email = ?, user_password = ? WHERE user_email = ?;";
 
             PreparedStatement statement = conn.prepareStatement(sql);
 
             statement.setString(1, userEmail);
             statement.setString(2, userPassword);
+            statement.setString(3, userEmail);
 
             statement.execute();
 
