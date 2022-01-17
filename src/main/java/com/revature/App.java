@@ -2,6 +2,7 @@ package com.revature;
 
 import com.revature.controllers.Controller;
 import com.revature.controllers.GameController;
+import com.revature.controllers.RecordController;
 import com.revature.controllers.UserController;
 import io.javalin.Javalin;
 import org.slf4j.Logger;
@@ -16,7 +17,7 @@ public class App {
 
         app = Javalin.create();
 
-        configure(new UserController(), new GameController());
+        configure(new UserController(), new GameController(), new RecordController());
 
         app.start();
 

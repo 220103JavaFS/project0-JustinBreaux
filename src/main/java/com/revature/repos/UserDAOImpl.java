@@ -96,11 +96,7 @@ public class UserDAOImpl implements UserDAO{
             statement.setString(1, userEmail);
             ResultSet result = statement.executeQuery();
             if(result.next()){
-                if(result.wasNull()){
-                    return false;
-                }else{
-                    return true;
-                }
+                return true;
             }else{
                 return false;
             }

@@ -65,4 +65,29 @@ public class GameDAOImpl implements GameDAO{
         }
         return null;
     }
+
+    @Override
+    public Game getGameByMachineNum(int num) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "SELECT * FROM games LEFT JOIN machines ON games.title = machines.game_title " +
+                    "WHERE machine_number = "+num+";";
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            Game game = new Game();
+            if(result.next()){
+                game.setTitle(result.getString("title"));
+                game.setCost(result.getInt("token_cost"));
+                game.setPointMin(result.getInt("point_min"));
+                game.setPointMax(result.getInt("point_max"));
+                game.setTicketMultiplier(result.getDouble("ticket_to_point_ratio"));
+            }else{
+                return null;
+            }
+            return game;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
