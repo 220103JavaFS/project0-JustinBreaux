@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 import com.revature.models.LoginDTO;
+import com.revature.models.Player;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
@@ -21,9 +22,15 @@ public class UserController implements Controller{
 
     private Handler getPlayer = (ctx)->{
         if(ctx.req.getSession(false)!=null){
-            String username = ctx.pathParam("username");
-            ctx.json(userService.getPlayer(username));
-            ctx.status(200);
+            Player player = userService.getPlayer(ctx.pathParam("username"));
+            if(player != null){
+                ctx.json(player);
+                ctx.status(200);
+            }else{
+                ctx.html("<h1> No Player by that name exists! </h1>");
+                ctx.status(404);
+            }
+
         }else {
             ctx.status(401);
         }

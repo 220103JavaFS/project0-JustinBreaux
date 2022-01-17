@@ -57,13 +57,15 @@ public class UserDAOImpl implements UserDAO{
                 player.setTokenBalance(result.getInt("token_balance"));
                 player.setTicketBalance(result.getInt("ticket_balance"));
                 player.setTier(result.getInt("tier"));
+            }else{
+                return null;
             }
             return player;
 
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return new Player();
+        return null;
     }
 
     @Override

@@ -13,13 +13,18 @@ public class GameController implements Controller{
 
     private Handler getAllGames = (ctx)->{
         List<Game> list = gameService.getAllGames();
-        ctx.json(list);
-        ctx.status(200);
+        if(list.isEmpty()){
+            ctx.html("<h1> There are no games :( </h1>");
+            ctx.status(404);
+        }else{
+            ctx.json(list);
+            ctx.status(200);
+        }
+
     };
 
-    private Handler getGameByName = (ctx)->{
-        Game game = gameService.getGameByTitle(ctx.pathParam("name"));
-
+    private Handler getGameByTitle = (ctx)->{
+        Game game = gameService.getGameByTitle(ctx.pathParam("title"));
         if(game != null){
             ctx.json(game);
             ctx.status(200);
@@ -27,12 +32,11 @@ public class GameController implements Controller{
             ctx.html("<h1> No such game exists!! </h1>");
             ctx.status(404);
         }
-
     };
 
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/Game", getAllGames);
-        app.get("/Game/{name}", getGameByName);
+        app.get("/games", getAllGames);
+        app.get("/games/{title}", getGameByTitle);
     }
 }
