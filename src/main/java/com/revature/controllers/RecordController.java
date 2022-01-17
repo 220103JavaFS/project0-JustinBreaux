@@ -46,7 +46,7 @@ public class RecordController implements Controller{
     private Handler playGame = (ctx)->{
         if(ctx.req.getSession().getAttribute("userType").equals("player")){
             Player player = (Player) ctx.req.getSession().getAttribute("userInfo");
-            int machineNum = Integer.parseInt(ctx.pathParam("machineNum"));
+            int machineNum = Integer.parseInt(ctx.body());
             ctx.json(recordService.playGame(player, machineNum));
             ctx.status(200);
         }else {
@@ -58,6 +58,6 @@ public class RecordController implements Controller{
     public void addRoutes(Javalin app) {
         app.get("/players/{username}/scores", getPlayerScores);
         app.get("/games/{title}/scores", getGameScores);
-        app.post("/{machineNum}/play", playGame);
+        app.post("/play", playGame);
     }
 }
