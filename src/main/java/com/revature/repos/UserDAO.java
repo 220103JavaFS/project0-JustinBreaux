@@ -1,7 +1,6 @@
 package com.revature.repos;
 
 import com.revature.models.Player;
-import com.revature.models.User;
 
 import java.util.List;
 

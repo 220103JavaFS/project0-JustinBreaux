@@ -18,7 +18,7 @@ public class GameController implements Controller{
     };
 
     private Handler getGameByName = (ctx)->{
-        Game game = gameService.getGameByName(ctx.pathParam("name"));
+        Game game = gameService.getGameByTitle(ctx.pathParam("name"));
 
         if(game != null){
             ctx.json(game);

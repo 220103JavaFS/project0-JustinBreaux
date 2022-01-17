@@ -1,35 +1,32 @@
 package com.revature.models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public final class Game {
-    public String name;
+public class Game {
+    public String title;
     public int cost;
-    public final int pointMin;
-    public final int pointMax;
+    public int pointMin;
+    public int pointMax;
     public double ticketMultiplier;
-    public ArrayList highScores;
-    private User player;
 
-    public Game(int pointMin, int pointMax) {
-        this.pointMin = pointMin;
-        this.pointMax = pointMax;
-        this.highScores = new ArrayList();
+    public Game() {
     }
 
-    public Game(String name, int cost, int pointMin, int pointMax, double ticketMultiplier) {
-        this(pointMin, pointMax);
-        this.name = name;
+    public Game(String title, int cost, int pointMin, int pointMax, double ticketMultiplier) {
+        this.title = title;
         this.cost = cost;
+        this.pointMin = pointMin;
+        this.pointMax = pointMax;
         this.ticketMultiplier = ticketMultiplier;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getCost() {
@@ -44,23 +41,47 @@ public final class Game {
         return pointMin;
     }
 
+    public void setPointMin(int pointMin) {
+        this.pointMin = pointMin;
+    }
+
     public int getPointMax() {
         return pointMax;
+    }
+
+    public void setPointMax(int pointMax) {
+        this.pointMax = pointMax;
     }
 
     public double getTicketMultiplier() {
         return ticketMultiplier;
     }
 
-    public void setTicketMultiplier(int ticketMultiplier) {
+    public void setTicketMultiplier(double ticketMultiplier) {
         this.ticketMultiplier = ticketMultiplier;
     }
 
-    public ArrayList getHighScores() {
-        return highScores;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Game)) return false;
+        Game game = (Game) o;
+        return getCost() == game.getCost() && getPointMin() == game.getPointMin() && getPointMax() == game.getPointMax() && Double.compare(game.getTicketMultiplier(), getTicketMultiplier()) == 0 && Objects.equals(getTitle(), game.getTitle());
     }
 
-    public void setHighScores(ArrayList highScores) {
-        this.highScores = highScores;
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTitle(), getCost(), getPointMin(), getPointMax(), getTicketMultiplier());
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "title='" + title + '\'' +
+                ", cost=" + cost +
+                ", pointMin=" + pointMin +
+                ", pointMax=" + pointMax +
+                ", ticketMultiplier=" + ticketMultiplier +
+                '}';
     }
 }

@@ -69,8 +69,9 @@ public class UserController implements Controller{
     public void addRoutes(Javalin app) {
         app.get("/players", getAllPlayers);
         app.get("/players/{username}", getPlayer);
+        //app.get("")
         //app.post("/user", addUser);
-        app.post("/users/changepw", setPassword);
+        //app.post("/players/{username}/changepw", setPassword);
         app.post("/login", login);
         app.post("/logout", logout);
 

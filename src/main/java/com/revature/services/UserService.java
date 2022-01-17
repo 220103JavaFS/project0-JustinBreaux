@@ -5,8 +5,6 @@ import com.revature.repos.LoginDAO;
 import com.revature.repos.LoginDAOImpl;
 import com.revature.repos.UserDAO;
 import com.revature.repos.UserDAOImpl;
-import com.revature.models.User;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.List;

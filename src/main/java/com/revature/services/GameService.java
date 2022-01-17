@@ -13,7 +13,7 @@ public class GameService {
         return gameDAO.getAllGames();
     }
 
-    public Game getGameByName(String name){
-        return gameDAO.getGameByName(name);
+    public Game getGameByTitle(String title){
+        return gameDAO.getGameByTitle(title);
     }
 }
