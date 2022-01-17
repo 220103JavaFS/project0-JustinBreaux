@@ -1,12 +1,14 @@
 package com.revature.models;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Record {
-    private Time time;
+    private Timestamp time;
     private Player player;
     private int score;
     private int machineNum;
@@ -21,7 +23,7 @@ public class Record {
     public Record() {
     }
 
-    public Record(Time time, Player player, int score, int machineNum, Game game) {
+    public Record(Timestamp time, Player player, int score, int machineNum, Game game) {
         this.time = time;
         this.player = player;
         this.score = score;
@@ -29,11 +31,11 @@ public class Record {
         this.game = game;
     }
 
-    public Time getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 

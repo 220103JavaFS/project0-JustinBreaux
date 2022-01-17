@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.models.Player;
 import com.revature.models.Record;
 import com.revature.services.RecordService;
 import io.javalin.Javalin;
@@ -42,9 +43,21 @@ public class RecordController implements Controller{
         }
     };
 
+    private Handler playGame = (ctx)->{
+        if(ctx.req.getSession().getAttribute("userType").equals("player")){
+            Player player = (Player) ctx.req.getSession().getAttribute("userInfo");
+            int machineNum = Integer.parseInt(ctx.pathParam("machineNum"));
+            ctx.json(recordService.playGame(player, machineNum));
+            ctx.status(200);
+        }else {
+            ctx.status(401);
+        }
+    };
+
     @Override
     public void addRoutes(Javalin app) {
         app.get("/players/{username}/scores", getPlayerScores);
         app.get("/games/{title}/scores", getGameScores);
+        app.post("/{machineNum}/play", playGame);
     }
 }

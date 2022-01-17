@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import com.revature.models.Admin;
 import com.revature.models.Player;
 import com.revature.repos.LoginDAO;
 import com.revature.repos.LoginDAOImpl;
@@ -18,8 +19,16 @@ public class UserService {
         return userDAO.getAllPlayers();
     }
 
-    public Player getPlayer(String username){
-        return userDAO.getPlayer(username);
+    public Player getPlayerByUsername(String username){
+        return userDAO.getPlayerByUsername(username);
+    }
+
+    public Player getPlayerByEmail(String email){
+        return userDAO.getPlayerByEmail(email);
+    }
+
+    public Admin getAdminByEmail(String email){
+        return userDAO.getAdminByEmail(email);
     }
 
     public boolean setPassword(String userEmail, String userPassword){
@@ -27,16 +36,12 @@ public class UserService {
         return userDAO.setPassword(userEmail, hashedPW);
     }
 
-    public String login(String userEmail, String password){
-         if(BCrypt.checkpw(password, loginDAO.getPassword(userEmail))){
-             if(userDAO.checkAdminStatus(userEmail)){
-                 return "admin";
-             }else{
-                 return "player";
-             }
-         }else{
-             return "failed";
-         }
+    public boolean login(String userEmail, String password){
+         return BCrypt.checkpw(password, loginDAO.getPassword(userEmail));
+    }
+
+    public boolean getAdminStatus(String email){
+        return userDAO.checkAdminStatus(email);
     }
 
 
