@@ -16,4 +16,8 @@ public class GameService {
     public Game getGameByTitle(String title){
         return gameDAO.getGameByTitle(title);
     }
+
+    public boolean changeGame(Game game){
+        return gameDAO.updateGame(game);
+    }
 }

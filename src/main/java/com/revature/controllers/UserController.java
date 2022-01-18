@@ -1,14 +1,9 @@
 package com.revature.controllers;
 
-import com.revature.models.Admin;
-import com.revature.models.LoginDTO;
 import com.revature.models.Player;
-import com.revature.models.User;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
-
-import java.util.Objects;
 
 public class UserController implements Controller{
 
@@ -25,26 +20,27 @@ public class UserController implements Controller{
     };
 
     private Handler getPlayer = (ctx)->{
-        if(ctx.req.getSession(false)!=null){
+        if(ctx.req.getSession(false)!=null){ //check if logged in
+            //Create new player object, get player by username from service layer with username provided by path parameter
             Player player = userService.getPlayerByUsername(ctx.pathParam("username"));
             if(player != null){
-                ctx.json(player);
-                ctx.status(200);
+                ctx.json(player); //returns complete player info
+                ctx.status(200); //OK
             }else{
                 ctx.html("<h1> No Player by that name exists! </h1>");
-                ctx.status(404);
+                ctx.status(404); //not found
             }
 
         }else {
-            ctx.status(401);
+            ctx.status(401); //unauthorized
         }
     };
 
 
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/players", getAllPlayers);
-        app.get("/players/{username}", getPlayer);
+        app.get("/players", getAllPlayers); //returns list of all players and all their info
+        app.get("/players/{username}", getPlayer); //returns all info of one player
         //app.post("/user", addUser);
 
 

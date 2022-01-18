@@ -67,12 +67,11 @@ public class RecordDAOImpl implements RecordDAO{
     public boolean createNewRecord(Timestamp time, String username, int machineNum) {
         try(Connection conn = ConnectionUtil.getConnection()){
             String sql = "INSERT INTO records (record_time, player, machine) " +
-                    "VALUES (?, ?, ?);";
+                    "VALUES (?, ?, "+machineNum+");";
 
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setTimestamp(1, time);
             statement.setString(2, username);
-            statement.setInt(3, machineNum);
             statement.execute();
 
             return true;

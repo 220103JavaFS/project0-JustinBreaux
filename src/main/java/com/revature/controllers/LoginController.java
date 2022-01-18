@@ -29,15 +29,6 @@ public class LoginController implements Controller{
 
             loginService.setPassword(email, login.password);
             ctx.status(200);
-//            if(user.getEmail().equals(login.userEmail)){
-//                if (userService.setPassword(login.userEmail, login.password)) {
-//                    ctx.status(202);
-//                } else {
-//                    ctx.status(401);
-//                }
-//            }else{
-//                ctx.status(401);
-//            }
         }else {
             ctx.status(401);
         }
@@ -73,7 +64,7 @@ public class LoginController implements Controller{
 
     @Override
     public void addRoutes(Javalin app) {
-        app.put("/players/changepw", setPassword);
+        app.put("/changepw", setPassword);
         app.post("/login", login);
         app.post("/logout", logout);
     }

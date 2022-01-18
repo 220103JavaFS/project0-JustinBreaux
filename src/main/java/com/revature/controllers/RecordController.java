@@ -6,6 +6,7 @@ import com.revature.services.RecordService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 public class RecordController implements Controller{
@@ -44,7 +45,8 @@ public class RecordController implements Controller{
     };
 
     private Handler playGame = (ctx)->{
-        if(ctx.req.getSession().getAttribute("userType").equals("player")){
+        if(ctx.req.getSession(false)!=null &&
+                ctx.req.getSession().getAttribute("userInfo").getClass().equals(Player.class)){
             Player player = (Player) ctx.req.getSession().getAttribute("userInfo");
             int machineNum = Integer.parseInt(ctx.body());
             ctx.json(recordService.playGame(player, machineNum));
@@ -56,8 +58,8 @@ public class RecordController implements Controller{
 
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/players/{username}/scores", getPlayerScores);
-        app.get("/games/{title}/scores", getGameScores);
-        app.post("/play", playGame);
+        app.get("/players/{username}/scores", getPlayerScores); //returns list of a player's records
+        app.get("/games/{title}/scores", getGameScores); //returns list of a game's records on all machines
+        app.post("/play", playGame); //creates a record and processes transaction
     }
 }

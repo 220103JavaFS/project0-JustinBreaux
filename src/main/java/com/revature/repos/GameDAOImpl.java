@@ -90,4 +90,24 @@ public class GameDAOImpl implements GameDAO{
         }
         return null;
     }
+
+    @Override
+    public boolean updateGame(Game game) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "UPDATE games SET title = ?, " +
+                    "token_cost = "+game.getCost()+", point_min = "+game.getPointMin()+", " +
+                    "point_max = "+game.getPointMax()+", ticket_to_point_ratio= "+game.getTicketMultiplier()+" " +
+                    "WHERE title = ?;";
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, game.getTitle());
+            statement.setString(2, game.getTitle());
+            statement.execute();
+
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
