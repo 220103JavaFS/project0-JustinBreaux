@@ -10,6 +10,5 @@ public interface UserDAO {
     public Player getPlayerByUsername(String username);
     public Player getPlayerByEmail(String email);
     public Admin getAdminByEmail(String email);
-    public boolean setPassword(String userEmail, String userPassword);
     public boolean checkAdminStatus(String userEmail);
 }

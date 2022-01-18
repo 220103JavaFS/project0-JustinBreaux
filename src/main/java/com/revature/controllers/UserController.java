@@ -40,73 +40,13 @@ public class UserController implements Controller{
         }
     };
 
-    private Handler setPassword = (ctx)->{
-        if(ctx.req.getSession(false)!=null) {
-            LoginDTO login = ctx.bodyAsClass(LoginDTO.class);
-            String email;
-            String userType = (String) ctx.req.getSession().getAttribute("userType");
-            if(userType.equals("admin")){
-                Admin admin = (Admin) ctx.req.getSession().getAttribute("userInfo");
-                //Admin admin = userService.getAdminByEmail(login.userEmail);
-                email = admin.getEmail();
-            }else{
-                Player player = (Player) ctx.req.getSession().getAttribute("userInfo");
-                //Player player = userService.getPlayerByEmail(login.userEmail);
-                email = player.getEmail();
-            }
-
-            userService.setPassword(email, login.password);
-            ctx.status(200);
-//            if(user.getEmail().equals(login.userEmail)){
-//                if (userService.setPassword(login.userEmail, login.password)) {
-//                    ctx.status(202);
-//                } else {
-//                    ctx.status(401);
-//                }
-//            }else{
-//                ctx.status(401);
-//            }
-        }else {
-            ctx.status(401);
-        }
-    };
-
-    private Handler login = (ctx)->{
-        LoginDTO login = ctx.bodyAsClass(LoginDTO.class);
-
-        if (userService.login(login.userEmail, login.password)){
-
-            if(userService.getAdminStatus(login.userEmail)){
-                Admin admin = userService.getAdminByEmail(login.userEmail);
-                ctx.req.getSession().setAttribute("userInfo", admin);
-                ctx.req.getSession().setAttribute("userType", "admin");
-                //ctx.sessionAttribute("user info", player);
-            }else{
-                Player player = userService.getPlayerByEmail(login.userEmail);
-                ctx.req.getSession().setAttribute("userInfo", player);
-                ctx.req.getSession().setAttribute("userType", "player");
-            }
-
-            ctx.status(200);
-        }else{
-            ctx.req.getSession().invalidate();
-            ctx.status(401);
-        }
-    };
-
-    private Handler logout = (ctx)->{
-        ctx.req.getSession().invalidate();
-        ctx.status(200);
-    };
 
     @Override
     public void addRoutes(Javalin app) {
         app.get("/players", getAllPlayers);
         app.get("/players/{username}", getPlayer);
         //app.post("/user", addUser);
-        app.put("/players/changepw", setPassword);
-        app.post("/login", login);
-        app.post("/logout", logout);
+
 
     }
 }

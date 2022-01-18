@@ -24,8 +24,6 @@ public class LoginDAOImpl implements LoginDAO{
             }else{
                 return null;
             }
-
-
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -33,7 +31,24 @@ public class LoginDAOImpl implements LoginDAO{
     }
 
     @Override
-    public boolean login(String username, String password) {
+    public boolean setPassword(String userEmail, String userPassword) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "UPDATE logins SET user_email = ?, user_password = ? WHERE user_email = ?;";
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, userEmail);
+            statement.setString(2, userPassword);
+            statement.setString(3, userEmail);
+
+            statement.execute();
+
+            return true;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
+
 }

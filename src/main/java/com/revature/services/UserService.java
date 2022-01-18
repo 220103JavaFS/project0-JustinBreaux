@@ -31,15 +31,6 @@ public class UserService {
         return userDAO.getAdminByEmail(email);
     }
 
-    public boolean setPassword(String userEmail, String userPassword){
-        String hashedPW = BCrypt.hashpw(userPassword, BCrypt.gensalt());
-        return userDAO.setPassword(userEmail, hashedPW);
-    }
-
-    public boolean login(String userEmail, String password){
-         return BCrypt.checkpw(password, loginDAO.getPassword(userEmail));
-    }
-
     public boolean getAdminStatus(String email){
         return userDAO.checkAdminStatus(email);
     }
