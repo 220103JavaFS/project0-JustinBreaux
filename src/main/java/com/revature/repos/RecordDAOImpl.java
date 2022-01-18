@@ -102,4 +102,21 @@ public class RecordDAOImpl implements RecordDAO{
         }
         return 0;
     }
+
+    @Override
+    public boolean deleteRecord(Record record) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "DELETE FROM records WHERE (record_time, player) = (?, ?);";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setTimestamp(1, record.getTime());
+            statement.setString(2, record.getPlayer().getUsername());
+            statement.execute();
+
+            return true;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -11,4 +11,5 @@ public interface RecordDAO {
     public List<Record> getScoresByGame(String title);
     public boolean createNewRecord(Timestamp time, String username, int machineNum);
     public int getScore(Timestamp time, String username);
+    public boolean deleteRecord(Record record);
 }

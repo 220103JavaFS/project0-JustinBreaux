@@ -40,4 +40,8 @@ public class RecordService {
             return new Record();
         }
     }
+
+    public boolean deleteRecord(Record record){
+        return recordDAO.deleteRecord(record);
+    }
 }
