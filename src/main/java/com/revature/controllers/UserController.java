@@ -39,8 +39,8 @@ public class UserController implements Controller{
 
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/players", getAllPlayers); //returns list of all players and all their info
-        app.get("/players/{username}", getPlayer); //returns all info of one player
+        app.get("/player", getAllPlayers); //returns list of all players and all their info
+        app.get("/player/{username}", getPlayer); //returns all info of one player
         //app.post("/user", addUser);
 
 

@@ -61,5 +61,6 @@ public class RecordController implements Controller{
         app.get("/players/{username}/scores", getPlayerScores); //returns list of a player's records
         app.get("/games/{title}/scores", getGameScores); //returns list of a game's records on all machines
         app.post("/play", playGame); //creates a record and processes transaction
+        //app.delete("/removerecord")
     }
 }

@@ -53,8 +53,8 @@ public class GameController implements Controller{
 
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/games", getAllGames);
-        app.get("/games/{title}", getGameByTitle);
-        app.put("/modifygame", changeGame);
+        app.get("/game", getAllGames);
+        app.get("/game/{title}", getGameByTitle);
+        app.put("/game", changeGame);
     }
 }

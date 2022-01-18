@@ -16,19 +16,18 @@ public class LoginController implements Controller{
         if(ctx.req.getSession(false)!=null) {
             LoginDTO login = ctx.bodyAsClass(LoginDTO.class);
             String email;
-            String userType = (String) ctx.req.getSession().getAttribute("userType");
-            if(userType.equals("admin")){
+
+            if(ctx.req.getSession().getAttribute("userInfo").getClass().equals(Admin.class)){
                 Admin admin = (Admin) ctx.req.getSession().getAttribute("userInfo");
-                //Admin admin = userService.getAdminByEmail(login.userEmail);
                 email = admin.getEmail();
             }else{
                 Player player = (Player) ctx.req.getSession().getAttribute("userInfo");
-                //Player player = userService.getPlayerByEmail(login.userEmail);
                 email = player.getEmail();
             }
 
             loginService.setPassword(email, login.password);
             ctx.status(200);
+
         }else {
             ctx.status(401);
         }
@@ -64,7 +63,7 @@ public class LoginController implements Controller{
 
     @Override
     public void addRoutes(Javalin app) {
-        app.put("/changepw", setPassword);
+        app.patch("/changepw", setPassword);
         app.post("/login", login);
         app.post("/logout", logout);
     }
