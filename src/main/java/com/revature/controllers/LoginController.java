@@ -4,13 +4,11 @@ import com.revature.models.Admin;
 import com.revature.models.LoginDTO;
 import com.revature.models.Player;
 import com.revature.services.LoginService;
-import com.revature.services.UserService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
 
 public class LoginController implements Controller{
-    LoginService loginService = new LoginService();
-    UserService userService = new UserService();
+    private LoginService loginService = new LoginService();
 
     private Handler setPassword = (ctx)->{
         if(ctx.req.getSession(false)!=null) {
@@ -25,9 +23,11 @@ public class LoginController implements Controller{
                 email = player.getEmail();
             }
 
-            loginService.setPassword(email, login.password);
-            ctx.status(200);
-
+            if(loginService.setPassword(email, login.password)){
+                ctx.status(200);
+            }else{
+                ctx.status(400);
+            }
         }else {
             ctx.status(401);
         }

@@ -7,15 +7,13 @@ import com.revature.repos.GameDAOImpl;
 import com.revature.repos.RecordDAO;
 import com.revature.repos.RecordDAOImpl;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 public class RecordService {
-    RecordDAO recordDAO = new RecordDAOImpl();
-    GameDAO gameDAO = new GameDAOImpl();
+    private RecordDAO recordDAO = new RecordDAOImpl();
+    private GameDAO gameDAO = new GameDAOImpl();
 
     public List<Record> getScoresByPlayer(String username){
         return recordDAO.getScoresByPlayer(username);

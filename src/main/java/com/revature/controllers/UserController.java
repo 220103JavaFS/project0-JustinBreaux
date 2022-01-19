@@ -2,7 +2,6 @@ package com.revature.controllers;
 
 import com.revature.models.Admin;
 import com.revature.models.Player;
-import com.revature.models.Record;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;

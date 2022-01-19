@@ -1,10 +1,6 @@
 package com.revature.models;
 
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Record {
@@ -13,12 +9,6 @@ public class Record {
     private int score;
     private int machineNum;
     private Game game;
-
-//    public static void main(String[] args) {
-//        time = LocalDateTime.of(2022, 1, 1, 14, 15, 0);
-//        System.out.println(time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-//    }
-
 
     public Record() {
     }

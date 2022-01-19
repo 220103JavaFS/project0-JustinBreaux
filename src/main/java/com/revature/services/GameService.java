@@ -7,7 +7,7 @@ import java.util.List;
 
 public class GameService {
 
-    GameDAOImpl gameDAO = new GameDAOImpl();
+    private GameDAOImpl gameDAO = new GameDAOImpl();
 
     public List<Game> getAllGames(){
         return gameDAO.getAllGames();

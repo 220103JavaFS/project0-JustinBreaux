@@ -7,7 +7,7 @@ import com.revature.repos.LoginDAOImpl;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 public class LoginService {
-    LoginDAO loginDAO = new LoginDAOImpl();
+    private LoginDAO loginDAO = new LoginDAOImpl();
 
     public boolean setPassword(String userEmail, String userPassword){
         String hashedPW = BCrypt.hashpw(userPassword, BCrypt.gensalt());

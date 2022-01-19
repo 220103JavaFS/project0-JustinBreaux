@@ -7,11 +7,10 @@ import com.revature.services.RecordService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 public class RecordController implements Controller {
-    RecordService recordService = new RecordService();
+    private RecordService recordService = new RecordService();
 
     private Handler getPlayerScores = (ctx) -> {
         if (ctx.req.getSession(false) != null) {
