@@ -86,7 +86,7 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public boolean addTokens(String email, int tokens) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "UPDATE players SET token_balance = "+tokens+" WHERE player_email = ?;";
+            String sql = "UPDATE players SET token_balance = token_balance + "+tokens+" WHERE player_email = ?;";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, email);
             statement.execute();

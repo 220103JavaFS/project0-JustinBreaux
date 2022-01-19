@@ -22,8 +22,8 @@ public class UserService {
         return userDAO.deletePlayer(player.getEmail());
     }
 
-    public boolean addTokens(Player player, int tokens){
-        return userDAO.addTokens(player.getEmail(), tokens);
+    public boolean addTokens(Player player){
+        return userDAO.addTokens(player.getEmail(), player.getTokenBalance());
     }
 
 
