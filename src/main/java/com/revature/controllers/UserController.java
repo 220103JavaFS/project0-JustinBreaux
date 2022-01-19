@@ -51,13 +51,27 @@ public class UserController implements Controller{
 
     };
 
+    private Handler addTokens = (ctx)->{
+        if (ctx.req.getSession(false) != null){
+            Player player = (Player) ctx.req.getSession().getAttribute("userInfo");
+            int tokens = Integer.parseInt(ctx.body());
+            if(userService.addTokens(player, tokens)){
+                ctx.status(202);
+            }else{
+                ctx.status(400);
+            }
+        }else {
+            ctx.status(401);
+        }
+    };
+
 
     @Override
     public void addRoutes(Javalin app) {
         app.get("/player", getAllPlayers); //returns list of all players and all their info
         app.get("/player/{username}", getPlayer); //returns all info of one player
         app.delete("/player", gameOver);
-
+        app.patch("/player", addTokens);
 
     }
 }

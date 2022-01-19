@@ -69,14 +69,30 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public boolean deletePlayer(Player player) {
+    public boolean deletePlayer(String email) {
         try(Connection conn = ConnectionUtil.getConnection()){
             String sql = "DELETE FROM players WHERE player_email = ?;";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, player.getEmail());
+            statement.setString(1, email);
             statement.execute();
 
             return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean addTokens(String email, int tokens) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "UPDATE players SET token_balance = "+tokens+" WHERE player_email = ?;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, email);
+            statement.execute();
+
+            return true;
+
         }catch (SQLException e){
             e.printStackTrace();
         }

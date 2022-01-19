@@ -19,7 +19,11 @@ public class UserService {
     }
 
     public boolean deletePlayer(Player player){
-        return userDAO.deletePlayer(player);
+        return userDAO.deletePlayer(player.getEmail());
+    }
+
+    public boolean addTokens(Player player, int tokens){
+        return userDAO.addTokens(player.getEmail(), tokens);
     }
 
 

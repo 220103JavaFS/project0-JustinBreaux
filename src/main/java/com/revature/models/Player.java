@@ -2,7 +2,7 @@ package com.revature.models;
 
 import java.util.Objects;
 
-public class Player{
+public class Player extends Admin{
     private String email;
     private String firstName;
     private String lastName;
