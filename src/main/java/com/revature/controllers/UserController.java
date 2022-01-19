@@ -54,10 +54,11 @@ public class UserController implements Controller{
     private Handler addTokens = (ctx)->{
         if (ctx.req.getSession(false) != null){
             Admin user = (Admin) ctx.req.getSession().getAttribute("userInfo");
-            Player player = ctx.bodyAsClass(Player.class);
+            int amount = Integer.parseInt(ctx.body());
+            String username = ctx.pathParam("username");
 
-            if(user.getEmail().equals(player.getEmail()) || user.getClass().equals(Admin.class) ){
-                if(userService.addTokens(player)){
+            if(user.getClass().equals(Admin.class) || ((Player) user).getUsername().equals(username)){
+                if(userService.addTokens(username, amount)){
                     ctx.status(202);
                 }else{
                     ctx.status(400);
@@ -77,7 +78,7 @@ public class UserController implements Controller{
         app.get("/player", getAllPlayers); //returns list of all players and all their info
         app.get("/player/{username}", getPlayer); //returns all info of one player
         app.delete("/player", gameOver);
-        app.patch("/player/modifytokens", addTokens);
+        app.patch("/player/{username}/modifytokens", addTokens);
 
     }
 }
