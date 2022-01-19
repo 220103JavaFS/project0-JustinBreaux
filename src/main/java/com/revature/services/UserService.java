@@ -35,5 +35,9 @@ public class UserService {
         return userDAO.checkAdminStatus(email);
     }
 
+    public boolean deletePlayer(Player player){
+        return userDAO.deletePlayer(player);
+    }
+
 
 }

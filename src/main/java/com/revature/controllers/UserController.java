@@ -1,6 +1,8 @@
 package com.revature.controllers;
 
+import com.revature.models.Admin;
 import com.revature.models.Player;
+import com.revature.models.Record;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
@@ -36,12 +38,26 @@ public class UserController implements Controller{
         }
     };
 
+    private Handler gameOver = (ctx) -> {
+        if (ctx.req.getSession(false) != null &&
+                ctx.req.getSession().getAttribute("userInfo").getClass().equals(Admin.class)) {
+            if(userService.deletePlayer(ctx.bodyAsClass(Player.class))){
+                ctx.status(202);
+            }else{
+                ctx.status(404);
+            }
+        }else {
+            ctx.status(401);
+        }
+
+    };
+
 
     @Override
     public void addRoutes(Javalin app) {
         app.get("/player", getAllPlayers); //returns list of all players and all their info
         app.get("/player/{username}", getPlayer); //returns all info of one player
-        //app.post("/user", addUser);
+        app.delete("/player", gameOver);
 
 
     }

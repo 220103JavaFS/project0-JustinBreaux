@@ -16,7 +16,6 @@ dependencies {
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.10'
 
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
     implementation 'io.javalin:javalin:4.1.1'
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.1'

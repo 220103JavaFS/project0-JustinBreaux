@@ -11,4 +11,5 @@ public interface UserDAO {
     public Player getPlayerByEmail(String email);
     public Admin getAdminByEmail(String email);
     public boolean checkAdminStatus(String userEmail);
+    public boolean deletePlayer(Player player);
 }
