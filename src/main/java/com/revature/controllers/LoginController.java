@@ -38,13 +38,13 @@ public class LoginController implements Controller{
 
         if (loginService.login(login.userEmail, login.password)){
 
-            if(userService.getAdminStatus(login.userEmail)){
-                Admin admin = userService.getAdminByEmail(login.userEmail);
+            if(loginService.getAdminStatus(login.userEmail)){
+                Admin admin = loginService.getAdminByEmail(login.userEmail);
                 ctx.req.getSession().setAttribute("userInfo", admin);
                 ctx.req.getSession().setAttribute("userType", "admin");
                 //ctx.sessionAttribute("user info", player);
             }else{
-                Player player = userService.getPlayerByEmail(login.userEmail);
+                Player player = loginService.getPlayerByEmail(login.userEmail);
                 ctx.req.getSession().setAttribute("userInfo", player);
                 ctx.req.getSession().setAttribute("userType", "player");
             }
