@@ -682,3 +682,21 @@ java.lang.IllegalArgumentException: 'title' is not a valid path-param for '/mach
 23:01:12.408 [] [qtp233996206-19] INFO  c.r.controllers.LoginController - christopher@dandb.com has logged out
 23:01:17.420 [] [qtp233996206-18] INFO  c.r.controllers.RecordController - access to game's high scores denied
 23:01:21.989 [] [qtp233996206-19] INFO  c.r.controllers.RecordController - access to machine's high scores denied
+23:13:56.106 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+23:13:56.122 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @458ms to org.eclipse.jetty.util.log.Slf4jLog
+23:13:56.122 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+23:13:56.138 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 101 days old. Consider upgrading!).
+23:13:56.138 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+23:13:56.408 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+23:13:56.408 [] [main] INFO  io.javalin.Javalin - Javalin started in 286ms \o/
+23:14:03.413 [] [qtp233996206-18] INFO  c.r.controllers.LoginController - betty852@sample.com has logged in
+23:14:14.815 [] [qtp233996206-16] INFO  c.r.controllers.UserController - betty852@sample.com requested to modify Betty's token balance
+23:14:15.110 [] [qtp233996206-16] INFO  c.r.controllers.UserController - betty852@sample.com modified Betty's token balance by 100
