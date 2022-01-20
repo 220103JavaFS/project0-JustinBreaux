@@ -1,4 +1,4 @@
-DROP VIEW IF EXISTS machine_expanded;
+DROP VIEW IF EXISTS machines_games_joined;
 DROP TABLE IF EXISTS records;
 DROP TABLE IF EXISTS machines;
 DROP TABLE IF EXISTS games;
@@ -49,7 +49,7 @@ CREATE TABLE records(
 	FOREIGN KEY (player) REFERENCES players(player_name)
 );
 
-CREATE OR REPLACE VIEW machine_expanded AS SELECT * FROM machines LEFT JOIN games ON  machines.game_title= games.title;
+CREATE OR REPLACE VIEW machines_games_joined AS SELECT * FROM machines LEFT JOIN games ON  machines.game_title= games.title;
 
 CREATE OR REPLACE FUNCTION random_between(low INT ,high INT)
    RETURNS INT AS
@@ -69,11 +69,11 @@ DECLARE
 	score_max integer;
 	ticket_rate NUMERIC;
 BEGIN
-	SELECT INTO score_min point_min FROM machine_expanded WHERE machine_number = NEW.machine;
-	SELECT INTO score_max point_max FROM machine_expanded WHERE machine_number = NEW.machine;
-	SELECT INTO game_cost token_cost FROM machine_expanded WHERE machine_number = NEW.machine;
+	SELECT INTO score_min point_min FROM machines_games_joined WHERE machine_number = NEW.machine;
+	SELECT INTO score_max point_max FROM machines_games_joined WHERE machine_number = NEW.machine;
+	SELECT INTO game_cost token_cost FROM machines_games_joined WHERE machine_number = NEW.machine;
 	SELECT INTO player_tier tier FROM players WHERE player_name = NEW.player;
-	SELECT INTO ticket_rate ticket_to_point_ratio FROM machine_expanded WHERE machine_number = NEW.machine;
+	SELECT INTO ticket_rate ticket_to_point_ratio FROM machines_games_joined WHERE machine_number = NEW.machine;
 	SELECT INTO new_score random_between(score_min, score_max);
 	UPDATE players SET
 		token_balance = token_balance - game_cost,
