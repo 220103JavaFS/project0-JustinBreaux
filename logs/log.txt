@@ -700,3 +700,97 @@ java.lang.IllegalArgumentException: 'title' is not a valid path-param for '/mach
 23:14:03.413 [] [qtp233996206-18] INFO  c.r.controllers.LoginController - betty852@sample.com has logged in
 23:14:14.815 [] [qtp233996206-16] INFO  c.r.controllers.UserController - betty852@sample.com requested to modify Betty's token balance
 23:14:15.110 [] [qtp233996206-16] INFO  c.r.controllers.UserController - betty852@sample.com modified Betty's token balance by 100
+09:02:07.476 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+09:02:07.511 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @489ms to org.eclipse.jetty.util.log.Slf4jLog
+09:02:07.512 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+09:02:07.534 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 102 days old. Consider upgrading!).
+09:02:07.535 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+09:02:07.766 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+09:02:07.766 [] [main] INFO  io.javalin.Javalin - Javalin started in 254ms \o/
+09:03:26.669 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+09:03:26.685 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @446ms to org.eclipse.jetty.util.log.Slf4jLog
+09:03:26.685 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+09:03:26.701 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 102 days old. Consider upgrading!).
+09:03:26.701 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+09:03:26.976 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+09:03:26.976 [] [main] INFO  io.javalin.Javalin - Javalin started in 291ms \o/
+09:03:32.968 [] [qtp233996206-17] INFO  c.r.controllers.LoginController - christopher@dandb.com has logged in
+09:03:39.215 [] [qtp233996206-15] INFO  c.r.controllers.UserController - christopher@dandb.com has requested full player list
+09:03:39.533 [] [qtp233996206-15] INFO  c.r.controllers.UserController - christopher@dandb.com got a list of all players
+09:04:46.113 [] [qtp233996206-12] INFO  c.r.controllers.UserController - christopher@dandb.com requested to delete ToBeDeleted
+09:04:46.447 [] [qtp233996206-12] INFO  c.r.controllers.UserController - request from christopher@dandb.com to delete ToBeDeleted was successful.
+09:04:46.448 [] [qtp233996206-12] INFO  c.r.controllers.UserController - Deleted info:Player{email='deleteme@bye.now', firstName='null', lastName='null', username='ToBeDeleted', tokenBalance=1, ticketBalance=1, tier=0}
+09:04:53.304 [] [qtp233996206-24] INFO  c.r.controllers.UserController - christopher@dandb.com has requested full player list
+09:04:53.624 [] [qtp233996206-24] INFO  c.r.controllers.UserController - christopher@dandb.com got a list of all players
+09:12:56.410 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+09:12:56.426 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @454ms to org.eclipse.jetty.util.log.Slf4jLog
+09:12:56.426 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+09:12:56.457 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 102 days old. Consider upgrading!).
+09:12:56.457 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+09:12:56.711 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+09:12:56.711 [] [main] INFO  io.javalin.Javalin - Javalin started in 285ms \o/
+09:13:05.207 [] [qtp233996206-18] INFO  c.r.controllers.LoginController - christopher@dandb.com has logged in
+09:13:11.604 [] [qtp233996206-16] INFO  c.r.controllers.UserController - christopher@dandb.com requested to delete ToBeDeleted
+09:13:11.907 [] [qtp233996206-16] INFO  c.r.controllers.UserController - request from christopher@dandb.com to delete ToBeDeleted was successful.
+09:13:11.907 [] [qtp233996206-16] INFO  c.r.controllers.UserController - Deleted info:Player{email='deleteme@bye.now', firstName='null', lastName='null', username='ToBeDeleted', tokenBalance=1, ticketBalance=1, tier=0}
+09:16:14.777 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+09:16:14.792 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @451ms to org.eclipse.jetty.util.log.Slf4jLog
+09:16:14.793 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+09:16:14.810 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 102 days old. Consider upgrading!).
+09:16:14.810 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+09:16:15.052 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+09:16:15.052 [] [main] INFO  io.javalin.Javalin - Javalin started in 260ms \o/
+09:16:19.661 [] [qtp233996206-18] INFO  c.r.controllers.LoginController - christopher@dandb.com has logged in
+09:16:28.688 [] [qtp233996206-15] INFO  c.r.controllers.UserController - christopher@dandb.com requested to delete ToBeDeleted
+09:16:28.987 [] [qtp233996206-15] INFO  c.r.controllers.UserController - request from christopher@dandb.com to delete ToBeDeleted was successful.
+09:16:28.988 [] [qtp233996206-15] INFO  c.r.controllers.UserController - Deleted info:Player{email='deleteme@bye.now', firstName='null', lastName='null', username='ToBeDeleted', tokenBalance=1, ticketBalance=1, tier=0}
+09:17:03.719 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+09:17:03.734 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @450ms to org.eclipse.jetty.util.log.Slf4jLog
+09:17:03.735 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+09:17:03.753 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 102 days old. Consider upgrading!).
+09:17:03.753 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+09:17:04.078 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+09:17:04.078 [] [main] INFO  io.javalin.Javalin - Javalin started in 344ms \o/
+09:17:08.822 [] [qtp233996206-14] INFO  c.r.controllers.LoginController - adawg@sample.com has logged in
+09:17:11.495 [] [qtp233996206-16] INFO  c.r.controllers.LoginController - adawg@sample.com has logged out
+09:17:14.637 [] [qtp233996206-18] INFO  c.r.controllers.LoginController - betty852@sample.com has logged in

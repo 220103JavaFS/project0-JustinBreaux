@@ -18,7 +18,7 @@ CREATE TABLE admins(
 );
 
 CREATE TABLE players(
-	player_email varchar(50) REFERENCES logins(user_email) PRIMARY KEY,
+	player_email varchar(50) PRIMARY KEY REFERENCES logins(user_email) ON DELETE CASCADE,
 	player_first_name varchar(15),
 	player_last_name varchar(20),
 	player_name varchar(15) UNIQUE,

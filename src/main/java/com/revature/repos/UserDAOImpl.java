@@ -71,7 +71,7 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public boolean deletePlayer(String email) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "DELETE FROM players WHERE player_email = ?;";
+            String sql = "DELETE FROM logins WHERE user_email = ?;";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, email);
             return(statement.executeUpdate() > 0);
