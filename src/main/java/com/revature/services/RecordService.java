@@ -27,19 +27,21 @@ public class RecordService {
         Timestamp time = Timestamp.valueOf(LocalDateTime.now());
 
         if(recordDAO.createNewRecord(time, player.getUsername(), machineNumber)){
-            Record record = new Record();
-            record.setTime(time);
-            record.setPlayer(player);
-            record.setMachineNum(machineNumber);
-            record.setGame(gameDAO.getGameByMachineNum(machineNumber));
-            record.setScore(recordDAO.getScore(time, player.getUsername()));
-            return record;
+            return recordDAO.getRecord(time, player.getUsername());
         }else{
-            return new Record();
+            return null;
         }
     }
 
     public boolean deleteRecord(Record record){
         return recordDAO.deleteRecord(record);
+    }
+
+    public List<Record> getHighScoresByGame(String title){
+        return recordDAO.getHighScoresByGame(title);
+    }
+
+    public List<Record> getHighScoresByMachine(int num){
+        return recordDAO.getHighScoresByMachine(num);
     }
 }

@@ -25,6 +25,4 @@ public class UserService {
     public boolean addTokens(String username, int amount){
         return userDAO.addTokens(username, amount);
     }
-
-
 }

@@ -71,9 +71,9 @@ public class RecordDAOImpl implements RecordDAO{
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setTimestamp(1, time);
             statement.setString(2, username);
-            statement.execute();
+            return (statement.executeUpdate() > 0);
 
-            return true;
+           // return true;
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -82,9 +82,9 @@ public class RecordDAOImpl implements RecordDAO{
     }
 
     @Override
-    public int getScore(Timestamp time, String username) {
+    public Record getRecord(Timestamp time, String username) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT score FROM records WHERE (record_time, player) = (?, ?);";
+            String sql = "SELECT * FROM records WHERE (record_time, player) = (?, ?);";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setTimestamp(1, time);
             statement.setString(2, username);
@@ -92,14 +92,18 @@ public class RecordDAOImpl implements RecordDAO{
             ResultSet result = statement.executeQuery();
 
             if(result.next()){
-                return result.getInt("score");
+                return new Record(time,
+                        userDAO.getPlayerByUsername(username),
+                        result.getInt("score"),
+                        result.getInt("machine"),
+                        gameDAO.getGameByMachineNum(result.getInt("machine")));
             }else{
-                return 0;
+                return new Record();
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     @Override
@@ -117,5 +121,61 @@ public class RecordDAOImpl implements RecordDAO{
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public List<Record> getHighScoresByGame(String title) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "SELECT * FROM records WHERE machine IN " +
+                    "(SELECT machine_number FROM machine_expanded WHERE title = ?) " +
+                    "ORDER BY score DESC, record_time DESC LIMIT 5;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, title);
+            ResultSet result = statement.executeQuery();
+
+            List<Record> list = new ArrayList<>();
+
+            while(result.next()){
+                Record record = new Record();
+                record.setTime(result.getTimestamp("record_time"));
+                record.setScore(result.getInt("score"));
+                record.setMachineNum(result.getInt("machine"));
+                record.setPlayer(userDAO.getPlayerByUsername(result.getString("player")));
+                record.setGame(gameDAO.getGameByMachineNum(result.getInt("machine")));
+                list.add(record);
+            }
+
+            return list;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Record> getHighScoresByMachine(int num) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "SELECT * FROM records WHERE machine = "+num+
+                    " ORDER BY score DESC, record_time DESC LIMIT 5;";
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            List<Record> list = new ArrayList<>();
+
+            while(result.next()){
+                Record record = new Record();
+                record.setTime(result.getTimestamp("record_time"));
+                record.setScore(result.getInt("score"));
+                record.setMachineNum(result.getInt("machine"));
+                record.setPlayer(userDAO.getPlayerByUsername(result.getString("player")));
+                record.setGame(gameDAO.getGameByMachineNum(result.getInt("machine")));
+                list.add(record);
+            }
+
+            return list;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

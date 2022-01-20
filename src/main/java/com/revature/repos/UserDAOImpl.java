@@ -74,9 +74,8 @@ public class UserDAOImpl implements UserDAO{
             String sql = "DELETE FROM players WHERE player_email = ?;";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, email);
-            statement.execute();
+            return(statement.executeUpdate() > 0);
 
-            return true;
         }catch (SQLException e){
             e.printStackTrace();
         }

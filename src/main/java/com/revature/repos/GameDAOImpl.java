@@ -101,9 +101,8 @@ public class GameDAOImpl implements GameDAO{
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, game.getTitle());
             statement.setString(2, game.getTitle());
-            statement.execute();
 
-            return true;
+            return (statement.executeUpdate() > 0);
         }catch (SQLException e){
             e.printStackTrace();
         }

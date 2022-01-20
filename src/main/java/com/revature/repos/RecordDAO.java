@@ -9,6 +9,8 @@ public interface RecordDAO {
     public List<Record> getScoresByPlayer(String username);
     public List<Record> getScoresByGame(String title);
     public boolean createNewRecord(Timestamp time, String username, int machineNum);
-    public int getScore(Timestamp time, String username);
+    public Record getRecord(Timestamp time, String username);
     public boolean deleteRecord(Record record);
+    public List<Record> getHighScoresByGame(String title);
+    public List<Record> getHighScoresByMachine(int num);
 }
